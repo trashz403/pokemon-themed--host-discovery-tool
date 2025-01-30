@@ -2,6 +2,14 @@ from termcolor import colored
 import pygame
 import time
 import nmap
+from tqdm import tqdm
+import itertools
+import sys
+import random
+import pyttsx3
+
+# Initialize pyttsx3 engine
+engine = pyttsx3.init()
 
 # Initialize pygame mixer
 pygame.mixer.init()
@@ -28,9 +36,8 @@ ascii_banner = f"""{PINK}
                                    .%((((((((%(((((((((%,                     .####(%((%                                                              
                                    ##((((((((((((%&((((((##                   &(####%(((*                                                             
                                    %#((((((((((((((((((#%(((#                /#####%#((((                                                             
-                                   %###(((((((((((((((((((((%##              &#####((((#*                                                             
-                                   #####(((((((((((((%   .&((((#(           ((##(%((((#(                                                              
-                                   .&#####(((((((((((. #&&&,,%((((#(        %#%#/.   .     .(/                                                        
+                                   %###(((((((((((((%   .&((((#(           ((##(%((((#(                                                              
+                                   #####(((((((((((. #&&&,,%((((#(        %#%#/.   .     .(/                                                        
                                      @##(###(((((((#   &&&&&&( %(((((%*,*/&.                .  .(                                                     
                                      #&%##(########*   @&&&&&&&# *,                               #                                                   
                                    %###(#%########&.  ,@&&&&&&&&&#../   ,                       .  .,                                                {BLUE}
@@ -69,8 +76,6 @@ print(ascii_banner)
 # Wait for the music to finish before exiting
 time.sleep(10)  # Adjust based on music length
 
-
-
 # User Input
 target = input(colored("Enter target IP or range (e.g., 192.168.1.0/24): ", "cyan"))
 print(colored("Select scan type:", "yellow"))
@@ -83,8 +88,16 @@ print(colored("6. ICMP Echo Request", "green"))
 print(colored("7. Indepth Scan", "green"))
 choice = str(input(colored("Enter choice (1-7): ", "cyan")))
 
+results = [
+    "✨ A Wild Host Appeared! ✨",
+    "⚡ Jigglypuff used Scan! It’s Super Effective! ⚡",
+    "🛑 No Hosts Found... Jigglypuff Fell Asleep! 💤"
+]
+
 def print_result(host, state):
-    print(colored(f"Host {host} is {state}.", "green"))
+    print(colored(random.choice(results), "green"))
+    engine.say("Scan complete! Jigglypuff found a wild host!")
+    engine.runAndWait()
 
 def icmp_echo_request(target):
     print(colored(f"Scanning {target} with ICMP Echo Request...", "blue"))
@@ -152,3 +165,15 @@ elif choice == '7':
     indepth_scan(target)
 else:
     print(colored("Invalid choice", "red"))
+    def type_out(text):
+        for char in text:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.05)
+        print()
+
+    type_out("Jigglypuff is singing... scanning network... 🎤")
+    if random.choice([True, False]):
+        print("🔥 ERROR: Jigglypuff got angry and shut down your PC! 😱")
+    else:
+        print("✅ Scan completed successfully!")
