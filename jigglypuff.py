@@ -100,49 +100,49 @@ def print_result(host, state):
     engine.runAndWait()
 
 def icmp_echo_request(target):
-    print(colored(f"Scanning {target} with ICMP Echo Request...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with ICMP Echo Request...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PE -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def icmp_timestamp_request(target):
-    print(colored(f"Scanning {target} with ICMP Timestamp Request...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with ICMP Timestamp Request...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PP -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def icmp_address_mask_request(target):
-    print(colored(f"Scanning {target} with ICMP Address Mask Request...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with ICMP Address Mask Request...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PM -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def tcp_syn_scan(target):
-    print(colored(f"Scanning the specified target {target} with TCP SYN Scan...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with TCP SYN Scan...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PS -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def tcp_ack_ping(target):
-    print(colored(f"Scanning the specified target {target} with TCP ACK Ping...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with TCP ACK Ping...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PA -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def udp_scan(target):
-    print(colored(f"Scanning the specified target {target} with UDP Scan...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤 {target} with UDP Scan...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PU -n -sn')
     for host in nm.all_hosts():
         print_result(host, nm[host].state())
 
 def indepth_scan(target):
-    print(colored(f"Scanning the specified target {target} with Indepth Scan...", "blue"))
+    print(colored(f"Jigglypuff is singing... scanning network... 🎤{target} with Indepth Scan...", "blue"))
     nm = nmap.PortScanner()
     nm.scan(hosts=target, arguments='-PE -PP -PM -PS -PA -PU -n -sn')
     for host in nm.all_hosts():
